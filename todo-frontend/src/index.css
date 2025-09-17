@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@nuxt/ui"; /* Import Nuxt UI styles */
+
+* {
+    font-family: "Playfair Display", serif;
+}
