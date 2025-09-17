@@ -59,7 +59,7 @@ function handleFilterChange(newFilter: string) {
 }
 
 const filteredTodos = computed(() => {
-  return todos.value.filter((todo) => {
+  return (todos.value ?? []).filter((todo) => {
     const matchesSearch = todo.todo?.toLowerCase().includes(searchTerm.value.toLowerCase())
     const matchesFilter =
       completionFilter.value === 'all'
@@ -127,6 +127,7 @@ function handlePageChange(page: number) {
           Incomplete
         </button>
       </div>
+      <div class="flex justify-between items-center">
       <button
         @click="isModalOpen = true"
         class="bg-[#7127b5] text-white px-4 py-2 rounded-md hover:bg-[#551c89] font-serif font-semibold cursor-pointer"
@@ -134,6 +135,15 @@ function handlePageChange(page: number) {
       >
         Add Todo
       </button>
+      <div class="mt-2">
+        <router-link
+          to="/chat"
+          class="bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-800 font-serif font-semibold cursor-pointer"
+        >
+          Go to Chat
+        </router-link>
+      </div>
+      </div>
     </section>
     <AddTodoModal :isOpen="isModalOpen" @close="isModalOpen = false" :addTodo="handleAddTodo" />
     <section aria-label="Todo list">
