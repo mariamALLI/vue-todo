@@ -20,7 +20,7 @@ This project consists of two main parts:
 
 ## Folder Structure
 
-```
+```text
 vue-todo/
 ├── todo-frontend/   # Vue 3 + Vite frontend
 ├── todo-backend/    # Bun backend (Express, WebSocket chat)
@@ -73,7 +73,7 @@ bun install
 
 ### Running the Application
 
-#### Start the backend (chat server):
+#### Start the backend (chat server)
 
 ```bash
 cd todo-backend
@@ -82,7 +82,7 @@ bun run index.ts
 node server.cjs
 ```
 
-#### Start the frontend:
+#### Start the frontend
 
 ```bash
 cd todo-frontend

@@ -9,17 +9,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AddTodoModal: typeof import('./src/components/AddTodoModal.vue')['default']
-    AddTodosModal: typeof import('./src/components/AddTodosModal.vue')['default']
     ChatBox: typeof import('./src/components/ChatBox.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     PaginationControl: typeof import('./src/components/PaginationControl.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
-    UButton: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
-    UCard: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Card.vue')['default']
-    UInput: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Input.vue')['default']
-    UModal: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Modal.vue')['default']
     WelcomPage: typeof import('./src/components/WelcomPage.vue')['default']
   }
 }

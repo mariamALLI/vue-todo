@@ -18,7 +18,7 @@ It features a todo list, real-time chat, and a modern UI.
 
 ## Project Structure
 
-```
+```text
 todo-frontend/
 ├── public/                # Static assets
 ├── src/
