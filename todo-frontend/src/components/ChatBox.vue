@@ -114,6 +114,7 @@ function handleSend() {
   padding: 8px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
+  color: #7c3aed;
 }
 .chatbox-send {
   background: #a855f7;
