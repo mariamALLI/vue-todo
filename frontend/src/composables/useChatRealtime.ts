@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import type { Ref } from 'vue';
 
 // Change to your Socket.io backend URL as needed
-const SOCKET_URL = 'https://todo-backend-h5h4.onrender.com';
+const SOCKET_URL = 'https://todo-backend.pipeops.net/';
 const socket = io(SOCKET_URL);
 
 export type ChatMessage = {
