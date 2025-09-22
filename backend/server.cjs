@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 // Use environment variable for MongoDB (never hardcode in cloud)
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/vue-todo';
 mongoose.connect(MONGO_URI);
-mongoose.connect('mongodb+srv://mariamalli_db_user:foLXx8TF82djgXOk@todo-backend.hucsc9o.mongodb.net/vue-todo?retryWrites=true&w=majority&appName=todo-backend')
+// mongoose.connect('mongodb+srv://mariamalli_db_user:foLXx8TF82djgXOk@todo-backend.hucsc9o.mongodb.net/vue-todo?retryWrites=true&w=majority&appName=todo-backend')
 
 // MongoDB Models
 // const TodoSchema = new mongoose.Schema({ text: String, completed: Boolean });
