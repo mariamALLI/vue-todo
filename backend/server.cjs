@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // Use environment variable for MongoDB (never hardcode in cloud)
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/vue-todo';
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGO_URI);
 
 // MongoDB Models
 const TodoSchema = new mongoose.Schema({ text: String, completed: Boolean });
