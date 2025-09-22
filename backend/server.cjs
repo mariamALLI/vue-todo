@@ -4,8 +4,9 @@ const socketIo = require('socket.io');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-// MongoDB setup
-mongoose.connect('mongodb://localhost:27017/vue-todo');
+// Use environment variable for MongoDB (never hardcode in cloud)
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/vue-todo';
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // MongoDB Models
 const TodoSchema = new mongoose.Schema({ text: String, completed: Boolean });
@@ -15,30 +16,46 @@ const ChatSchema = new mongoose.Schema({ text: String, time: String, username: S
 const ChatMsg = mongoose.model('ChatMsg', ChatSchema);
 
 const app = express();
-app.use(cors());
+
+// Only allow requests from your frontend domains
+const allowedOrigins = [
+  'http://localhost:5174',
+  'https://todo-wit-chat.pipeops.net',
+  // Add your deployed frontend domain here!
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
 app.use(express.json());
 
 const server = http.createServer(app);
-const io = socketIo(server, { cors: { origin: '*' } });
+
+// Socket.io CORS config
+const io = socketIo(server, {
+  cors: {
+    origin: allowedOrigins,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  }
+});
 
 io.on('connection', async (socket) => {
-  // Send current todos and chat messages
   socket.emit('todosUpdate', await Todo.find().sort({ _id: -1 }));
   socket.emit('chatUpdate', await ChatMsg.find().sort({ _id: 1 }));
 
-  // Add Todo
   socket.on('addTodo', async (todo) => {
     await new Todo(todo).save();
     io.emit('todosUpdate', await Todo.find().sort({ _id: -1 }));
   });
 
-  // Delete Todo
   socket.on('deleteTodo', async (id) => {
     await Todo.deleteOne({ _id: id });
     io.emit('todosUpdate', await Todo.find().sort({ _id: -1 }));
   });
 
-  // Toggle Todo
   socket.on('toggleTodo', async (id) => {
     const todo = await Todo.findById(id);
     if (todo) {
@@ -48,21 +65,21 @@ io.on('connection', async (socket) => {
     }
   });
 
-  // Chatting
   socket.on('sendMessage', async (msg) => {
     await new ChatMsg(msg).save();
     io.emit('chatUpdate', await ChatMsg.find().sort({ _id: 1 }));
   });
 });
 
-// Optional: REST endpoints for external CRUD (not used by Socket.io clients)
+// Optional REST endpoints
 app.get('/api/todos', async (req, res) => {
   res.json(await Todo.find().sort({ _id: -1 }));
 });
+
 app.get('/api/chats', async (req, res) => {
   res.json(await ChatMsg.find().sort({ _id: 1 }));
 });
-// Start server
 
-const PORT = 3000;
+// Use Render's provided port
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Socket.io backend running at http://localhost:${PORT}`));
