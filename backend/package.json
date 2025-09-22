@@ -1,10 +1,9 @@
 {
   "name": "todo-backend",
-  "module": "index.ts",
   "type": "module",
   "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "start": "node server.cjs"
   },
   "peerDependencies": {
     "typescript": "^5"
