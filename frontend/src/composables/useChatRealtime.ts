@@ -4,7 +4,13 @@ import type { Ref } from 'vue';
 
 // Change to your Socket.io backend URL as needed
 const SOCKET_URL = 'https://todo-backend.pipeops.net/';
-const socket = io(SOCKET_URL);
+const socket = io(SOCKET_URL, {
+    transports: ['websocket', 'polling'],
+  timeout: 20000,
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionAttempts: 5,
+});
 
 export type ChatMessage = {
   _id?: string;      // If using MongoDB
@@ -16,25 +22,51 @@ username: string;
 
 export function useChatRealtime(username: Ref<string>, avatar: Ref<string>) {
   const chatMessages = ref<ChatMessage[]>([]);
+  const connectionStatus = ref('disconnected');
 
   // Listen for chat updates from server
   onMounted(() => {
+      // Connection event listeners
+    socket.on('connect', () => {
+      console.log('Socket connected:', socket.id);
+      connectionStatus.value = 'connected';
+    });
+
+    socket.on('disconnect', (reason) => {
+      console.log('Socket disconnected:', reason);
+      connectionStatus.value = 'disconnected';
+    });
+
+    socket.on('connect_error', (error) => {
+      console.error('Socket connection error:', error);
+      connectionStatus.value = 'error';
+    });
+
+    // Listen for chat updates
     socket.on('chatUpdate', (msgs: ChatMessage[]) => {
       chatMessages.value = msgs;
     });
   });
 
   onUnmounted(() => {
+     socket.off('connect');
+    socket.off('disconnect');
+    socket.off('connect_error');
     socket.off('chatUpdate');
   });
 
   // Send a message to server
   const sendMessage = (msg: Omit<ChatMessage, '_id'>) => {
-    socket.emit('sendMessage',{ ...msg, username:username.value, avatar:avatar.value });
+    if (socket.connected){
+          socket.emit('sendMessage',{ ...msg, username:username.value, avatar:avatar.value });
+    } else {
+      console.error('Socket not connected. Message not sent.');
+    }
   };
 
   return {
     chatMessages,
     sendMessage,
+    connectionStatus,
   };
 }

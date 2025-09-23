@@ -4,3 +4,7 @@
 * {
     font-family: "Playfair Display", serif;
 }
+
+body {
+    @apply bg-white text-gray-900;
+}
