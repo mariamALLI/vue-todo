@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { onMounted } from 'vue';
+import { useHead } from '@vueuse/head';
+
+// Head meta (for Vue, use @vueuse/head or vue-meta if you want dynamic titles)
+useHead({
+  title: 'Welcome | My Todo App',
+  meta: [{ name: 'description', content: 'Welcome to My Todo App - Start managing your tasks today!' }],
+});
 
 const router = useRouter();
-
-onMounted(() => {
-  document.title = 'Welcome | My Todo App';
-  // If you want meta tags, use vue-meta or @vueuse/head
-});
 </script>
 
 <template>
@@ -26,7 +27,7 @@ onMounted(() => {
     </h1>
     <div class="flex flex-col items-center mt-2 space-y-2">
       <button
-        class="bg-[#7127b5] text-white font-serif text-lg px-6 py-3 font-bold rounded hover:bg-[#551c89]"
+        class="bg-[#7127b5] text-white font-serif text-lg px-6 py-3 font-bold rounded hover:bg-[#551c89] transition-colors cursor-pointer"
         @click="router.push('/todos')"
       >
         Start Curating Your Todo List

@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex items-center justify-center bg-gray-100">
+  <section class="min-h-screen flex items-center justify-center bg-bg p-4">
     <div class="text-center p-8 bg-white rounded-lg shadow-md">
       <h1 class="text-6xl font-bold text-gray-800 mb-4 font-serif bg-gradient-to-r from-purple-700 to-pink-600 leading-right bg-clip-text text-transparent">404</h1>
       <h2 class="text-2xl font-semibold text-gray-600 mb-4 font-serif bg-gradient-to-r from-purple-700 to-pink-600 leading-right bg-clip-text text-transparent">Page Not Found</h2>
@@ -13,3 +13,9 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+.bg {
+  background: linear-gradient(135deg, #e0cbda 0%, #9f54d6 100%);
+}
+</style>

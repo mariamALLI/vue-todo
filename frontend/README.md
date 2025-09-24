@@ -1,6 +1,6 @@
 # Vue Todo Frontend
 
-This is the frontend for the Vue Todo application, built with **Vue 3**, **Vite**, and **Bun**.  
+This is the frontend for the Vue Todo application, built with **Vue 3**, **Vite**, and **npm**.  
 It features a todo list, real-time chat, and a modern UI.
 
 ---
@@ -44,7 +44,7 @@ todo-frontend/
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) v1.2.21 or later
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 - [Node.js](https://nodejs.org/) (optional, for compatibility)
 
 ---
@@ -54,7 +54,7 @@ todo-frontend/
 Install dependencies with Bun:
 
 ```bash
-bun install
+npm install
 ```
 
 ---
@@ -64,7 +64,7 @@ bun install
 Start the development server with hot reload:
 
 ```bash
-bun dev
+npm run dev
 ```
 
 ---
@@ -74,7 +74,7 @@ bun dev
 Type-check, compile, and minify:
 
 ```bash
-bun run build
+npm run build
 ```
 
 ---
@@ -84,7 +84,7 @@ bun run build
 Check code style with ESLint:
 
 ```bash
-bun lint
+npm lint
 ```
 
 ---
@@ -107,15 +107,8 @@ bun lint
 
 ## Recommended IDE Setup
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+- [VSCode](https://code.visualstudio.com/)
 - Disable Vetur for best Vue 3 experience.
-
----
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default.  
-Use [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) for editor support.
 
 ---
 
@@ -133,4 +126,4 @@ MIT
 
 ## Credits
 
-Created with [Vue 3](https://vuejs.org/), [Vite](https://vitejs.dev/), and [Bun](https://bun.sh/).
+Created with [Vue 3](https://vuejs.org/), [Vite](https://vitejs.dev/), and - [npm](https://www.npmjs.com/).

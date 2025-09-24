@@ -1,6 +1,6 @@
 # Vue Todo Application
 
-A full-stack Todo app featuring a modern Vue 3 frontend and a Bun-powered backend with real-time chat.
+A full-stack Todo app featuring a modern Vue 3 frontend and a nodejs-powered backend with real-time chat.
 
 ---
 
@@ -9,11 +9,11 @@ A full-stack Todo app featuring a modern Vue 3 frontend and a Bun-powered backen
 This project consists of two main parts:
 
 - **Frontend:**  
-  Built with Vue 3, Vite, and Bun.  
+  Built with Vue 3, Vite, and npm.  
   Features todo management and a real-time chat interface.
 
 - **Backend:**  
-  Powered by Bun and Express (CommonJS).  
+  Powered by SocketIO and Express (CommonJS).  
   Provides a WebSocket server for real-time chat messages.
 
 ---
@@ -23,7 +23,7 @@ This project consists of two main parts:
 ```text
 vue-todo/
 ├── todo-frontend/   # Vue 3 + Vite frontend
-├── todo-backend/    # Bun backend (Express, WebSocket chat)
+├── todo-backend/    # Nodejs backend (Express, WebSocket chat)
 └── README.md        # Project documentation
 ```
 
@@ -44,7 +44,7 @@ vue-todo/
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) v1.2.21 or later
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 - [Node.js](https://nodejs.org/) (optional, for backend compatibility)
 - [MongoDB](https://www.mongodb.com/) (if you expand backend to use a database)
 
@@ -63,10 +63,10 @@ cd vue-todo
 
 ```bash
 cd todo-frontend
-bun install
+npm install
 
 cd ../todo-backend
-bun install
+npm install
 ```
 
 ---
@@ -77,7 +77,7 @@ bun install
 
 ```bash
 cd todo-backend
-bun run index.ts
+npm run start
 # or, if using server.cjs:
 node server.cjs
 ```
@@ -86,7 +86,7 @@ node server.cjs
 
 ```bash
 cd todo-frontend
-bun dev
+npm run dev
 ```
 
 ---
@@ -108,8 +108,8 @@ bun dev
 - **todo-frontend/**  
   Vue components, composables, pages, router, and utility functions.
 
-- **todo-backend/**  
-  Express server (server.cjs), Bun entry (index.ts), and chat logic.
+- **chat-backend/**  
+  Express server (server.cjs), npm entry (index.ts), and chat logic.
 
 ---
 
@@ -121,4 +121,4 @@ MIT
 
 ## Credits
 
-Created with [Vue 3](https://vuejs.org/), [Vite](https://vitejs.dev/), and [Bun](https://bun.sh/).
+Created with [Vue 3](https://vuejs.org/), [Vite](https://vitejs.dev/), and - [npm](https://www.npmjs.com/).

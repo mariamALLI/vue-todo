@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useHead } from '@vueuse/head';
 
 useHead({
@@ -9,11 +9,20 @@ useHead({
   ]
 });
 
-const error = ref(false);
+const shouldThrowError = ref(false);
 
-if (error.value) {
+const triggerError = () => {
+  shouldThrowError.value = true;
+};
+
+// This computed property will throw an error when shouldThrowError is true
+const errorTrigger = computed(() => {
+  if (shouldThrowError.value) {
   throw new Error('This is a test error to demonstrate the error boundary');
 }
+  return null;
+})
+
 </script>
 
 <template>
@@ -26,11 +35,17 @@ if (error.value) {
         This page demonstrates how the Error Boundary component works. Click the button below to trigger an error.
       </p>
       <button
-        @click="error = true"
+        @click="triggerError"
         class="mt-4 bg-red-600 text-white px-4 py-2 rounded"
       >
         Trigger Error
       </button>
+        <p class="text-sm text-gray-500">
+          When clicked, this will demonstrate the error boundary fallback UI
+        </p>
+
+        <!-- this will trigger  -->
+         <div v-if="shouldThrowError">{{ errorTrigger }}</div>
     </div>
   </div>
 </template>

@@ -101,7 +101,7 @@ function handlePageChange(page: number) {
       <div class="mb-4 flex gap-2">
         <button
           :class="[
-            'px-4 py-2 rounded font-serif',
+            'px-4 py-2 rounded font-serif cursor-pointer',
             completionFilter === 'all' ? 'bg-purple-700 text-white' : 'bg-gray-500',
           ]"
           @click="handleFilterChange('all')"
@@ -110,7 +110,7 @@ function handlePageChange(page: number) {
         </button>
         <button
           :class="[
-            'px-4 py-2 rounded font-serif',
+            'px-4 py-2 rounded font-serif cursor-pointer',
             completionFilter === 'complete' ? 'bg-purple-700 text-white' : 'bg-gray-500',
           ]"
           @click="handleFilterChange('complete')"
@@ -119,7 +119,7 @@ function handlePageChange(page: number) {
         </button>
         <button
           :class="[
-            'px-4 py-2 rounded font-serif',
+            'px-4 py-2 rounded font-serif cursor-pointer',
             completionFilter === 'incomplete' ? 'bg-purple-700 text-white' : 'bg-gray-500',
           ]"
           @click="handleFilterChange('incomplete')"

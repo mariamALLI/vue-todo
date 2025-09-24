@@ -4,12 +4,21 @@ This backend powers the real-time chat feature for the Vue Todo application.
 
 ---
 
+## Tech Stack
+
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [Socket.IO](https://socket.io/) (for real-time chat)
+- TypeScript
+
+---
+
 ## Getting Started
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) v1.2.21 or later
-- [Node.js](https://nodejs.org/) (if you want to run server.cjs directly)
+- [Node.js](https://nodejs.org/) v16 or later
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
 ---
 
@@ -25,42 +34,33 @@ This backend powers the real-time chat feature for the Vue Todo application.
 
 ---
 
-## Getting Started
+## Usage
 
 ### Install dependencies
 
 ```bash
-bun install
+npm install
 ```
 
 ### Run the chat server
 
 ```bash
-bun run index.ts
+npm start
 ```
 
-#### Using Node.js (for server.cjs)
+#### For development (with auto-restart)
 
 ```bash
-node server.cjs
+npm run dev
 ```
-
-> This project was created using `bun init` in bun v1.2.21.  
-> [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
-
----
-
-> **Note:**  
-> The main backend logic is currently in `server.cjs`, which uses Express and CommonJS syntax.  
-> The `index.ts` file is a placeholder for Bun entry (not yet implemented).
 
 ---
 
 ## Project Structure
 
-- `index.ts`: Entry point for the Bun chat server.
-- `server.cjs`: (If present) May contain Express or Socket.IO logic for chat.
-- `.gitignore`, `bun.lock`, `package.json`, `tsconfig.json`: Standard project files.
+- `index.ts`: Entry point for the chat server.
+- `server.cjs`: contain Express and Socket.IO logic for chat.
+- `.gitignore`, `package-lock.json`, `package.json`, `tsconfig.json`: Standard project files.
 
 ---
 
@@ -72,4 +72,4 @@ MIT
 
 ## Credits
 
-Created with [Bun](https://bun.sh/) and [Express](https://expressjs.com/).
+Created with [Node.js](https://nodejs.org/), [Express](https://expressjs.com/), and [Socket.IO](https://socket.io/).

@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AddTodoModal: typeof import('./src/components/AddTodoModal.vue')['default']
     ChatBox: typeof import('./src/components/ChatBox.vue')['default']
+    ErrorBoundary: typeof import('./src/components/ErrorBoundary.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     PaginationControl: typeof import('./src/components/PaginationControl.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
